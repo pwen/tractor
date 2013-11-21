@@ -1,0 +1,15 @@
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
+*~
+
+pids
+logs
+
+node_modules
+

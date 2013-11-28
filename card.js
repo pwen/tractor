@@ -1,6 +1,33 @@
+var ordering = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+var suites = ['Heart','Spade','Club','Diamond']
+
 var Card = function(suite,value){
-  this.suite = suite;
-  this.value = value;
+  Object.defineProperties(this, {
+    suite: { value: suite },
+    value: { value: value }
+  });
+
+  this.sameSuite = function(other){
+    return this.suite === other.suite;
+  }
+
+  this.compareTo = function(other){
+    if(this.value === other.value) return 0;
+
+    if(this.suite === 'Joker'){
+      if(other.suite !== 'Joker') return 1;
+      if(this.value === 'big') return 1;
+      return -1;
+    }
+
+    if(other.suite === 'Joker') return -1;
+
+    myIndex = ordering.indexOf(this.value);
+    otherIndex = ordering.indexOf(other.value);
+
+    if (myIndex > otherIndex) return 1;
+    return -1;
+  }
 }
 
 var shuffleCards = function(unshuffledCards) {
@@ -15,14 +42,14 @@ var shuffleCards = function(unshuffledCards) {
 var createCards = function(){
   var arr = [];
 
-  ['2','3','4','5','6','7','8','9','10','J','Q','K','A'].forEach(function(value){
-    ['heart','spade','club','diamond'].forEach(function(suite){
-      arr.push(new Card(value, suite));
+  ordering.forEach(function(value){
+    suites.forEach(function(suite){
+      arr.push(new Card(suite, value));
     });
   });
 
-  arr.push(new Card( 'Joker','little'));
-  arr.push(new Card( 'Joker','big'));
+  arr.push(new Card('Joker','little'));
+  arr.push(new Card('Joker','big'));
 
   return arr;
 };

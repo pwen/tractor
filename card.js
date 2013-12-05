@@ -23,7 +23,7 @@ var Card = function(suite,value){
     if(other.suite === 'Joker') return -1;
 
     myIndex = ordering.indexOf(this.value);
-    otherIndex = ordering.indexOf(other.value);
+   otherIndex = ordering.indexOf(other.value);
 
     if (myIndex > otherIndex) return 1;
     return -1;

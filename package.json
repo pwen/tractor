@@ -1,0 +1,29 @@
+{
+  "name": "tractor",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pwen/tractor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pwen/tractor/issues"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt mochaTest"
+  },
+  "dependencies": {
+    "grunt": "~0.4.2"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-watch": "~0.5.3",
+    "sinon": "~1.7.3",
+    "istanbul": "~0.1.46",
+    "mocha": "~1.14.0",
+    "grunt-mocha-test": "~0.8.1"
+  }
+}

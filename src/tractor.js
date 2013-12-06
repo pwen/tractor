@@ -1,8 +1,7 @@
-var card = require('./card');
 var http = require('http');
 
 var getBasicCredentials = function(authentication){
-  if(!authentication) return null;
+  if(!authentication) {return null;}
 
   var userpass = authentication.replace(/Basic (.*)$/, '$1');
   var decoded = new Buffer(userpass, 'base64').toString();
@@ -12,7 +11,7 @@ var getBasicCredentials = function(authentication){
   return {
     username: username,
     password: password
-  }
+  };
 };
 
 var validCredentials = {
@@ -21,7 +20,7 @@ var validCredentials = {
 };
 
 var validateCredentials = function(credentials) {
-  return JSON.stringify(credentials) == JSON.stringify(validCredentials);  
+  return JSON.stringify(credentials) === JSON.stringify(validCredentials);  
 };
 
 var unclaimedPlayers = ["mrak","player2","player3","player4"];
@@ -53,4 +52,4 @@ module.exports = {
   getBasicCredentials: getBasicCredentials,
   playerFunction: playerFunction,
   validateCredentials: validateCredentials
-}
+};

@@ -1,6 +1,6 @@
 var assert = require('assert');
 describe("card", function(){
-  var card = require('./card');
+  var card = require('../src/card');
   var Card = card.Card;
   
   describe("on create", function(){
@@ -40,41 +40,42 @@ describe("card", function(){
       var king = new Card("Heart", "K");
       var queen = new Card("Heart", "Q");
 
-      assert(king.compareTo(queen) == 1);
-      assert(queen.compareTo(king) == -1);
-      assert(queen.compareTo(queen) == 0);
+      assert.equal(king.compareTo(queen), 1);
+      assert.equal(queen.compareTo(king), -1);
+      assert.equal(queen.compareTo(queen), 0);
     });
 
     it('should compare a King before an Ace', function(){
       var king = new Card("Heart", "K");
       var ace = new Card("Heart", "A");
 
-      assert(king.compareTo(ace) == -1);
-      assert(ace.compareTo(king) == 1);
-      assert(ace.compareTo(ace) == 0);
+      assert.equal(king.compareTo(ace), -1);
+      assert.equal(ace.compareTo(king), 1);
+      assert.equal(ace.compareTo(ace), 0);
     });
     
     it('should compare a 3 before a 5', function(){
       var smaller = new Card("Heart", "3");
       var bigger= new Card("Heart", "5");
-      assert(smaller.compareTo(bigger) == -1);
-      assert(bigger.compareTo(smaller) == 1);
-      assert(smaller.compareTo(smaller) == 0);
-      assert(bigger.compareTo(bigger) == 0);
+
+      assert.equal(smaller.compareTo(bigger), -1);
+      assert.equal(bigger.compareTo(smaller), 1);
+      assert.equal(smaller.compareTo(smaller), 0);
+      assert.equal(bigger.compareTo(bigger), 0);
     });
     it('should compare a little Joker before a big Joker', function(){
       var smaller = new Card("Joker", 'little');
       var bigger = new Card("Joker", 'big');
-      assert(smaller.compareTo(bigger) == -1);
-      assert(bigger.compareTo(smaller) == 1);
-      assert(bigger.compareTo(bigger) == 0);
+      assert.equal(smaller.compareTo(bigger), -1);
+      assert.equal(bigger.compareTo(smaller), 1);
+      assert.equal(bigger.compareTo(bigger), 0);
     });
     it('should compare a little Joker before an Ace', function(){
       var smaller = new Card("Heart", 'A');
       var bigger = new Card("Joker", 'big');
-      assert(smaller.compareTo(bigger) == -1);
-      assert(bigger.compareTo(smaller) == 1);
-      assert(bigger.compareTo(bigger) == 0);
+      assert.equal(smaller.compareTo(bigger),-1);
+      assert.equal(bigger.compareTo(smaller),1);
+      assert.equal(bigger.compareTo(bigger),0);
     });
   });
 

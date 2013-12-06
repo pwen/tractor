@@ -1,0 +1,24 @@
+
+{
+  "curly": true,
+    "eqeqeq": true,
+    "immed": true,
+    "latedef": "nofunc",
+    "newcap": true,
+    "noarg": true,
+    "sub": true,
+    "undef": true,
+    "unused": true,
+    "boss": true,
+    "eqnull": true,
+    "node": true,
+    "globals": {
+      "require": true,
+      "define": true,
+      "describe": true,
+      "expect": true,
+      "it": true,
+      "requirejs": true,
+      "beforeEach": true
+    }
+}

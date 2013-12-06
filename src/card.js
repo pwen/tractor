@@ -1,5 +1,5 @@
-var ordering = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
-var suites = ['Heart','Spade','Club','Diamond']
+var ordering = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+var suites = ['Heart','Spade','Club','Diamond'];
 
 var Card = function(suite,value){
   Object.defineProperties(this, {
@@ -9,26 +9,26 @@ var Card = function(suite,value){
 
   this.sameSuite = function(other){
     return this.suite === other.suite;
-  }
+  };
 
   this.compareTo = function(other){
-    if(this.value === other.value) return 0;
+    if(this.value === other.value) {return 0;}
 
     if(this.suite === 'Joker'){
-      if(other.suite !== 'Joker') return 1;
-      if(this.value === 'big') return 1;
+      if(other.suite !== 'Joker') {return 1;}
+      if(this.value === 'big') {return 1;}
       return -1;
     }
 
-    if(other.suite === 'Joker') return -1;
+    if(other.suite === 'Joker') {return -1;}
 
-    myIndex = ordering.indexOf(this.value);
-   otherIndex = ordering.indexOf(other.value);
+    var myIndex = ordering.indexOf(this.value);
+    var otherIndex = ordering.indexOf(other.value);
 
-    if (myIndex > otherIndex) return 1;
+    if (myIndex > otherIndex) {return 1;}
     return -1;
-  }
-}
+  };
+};
 
 var shuffleCards = function(unshuffledCards) {
   var shuffledCards = [];
@@ -58,4 +58,4 @@ module.exports = {
   createCards: createCards,
   shuffleCards: shuffleCards,
   Card: Card
-}
+};

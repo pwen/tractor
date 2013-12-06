@@ -4,7 +4,7 @@ var sinon = require('sinon');
 describe("tractor game", function() {
   
   beforeEach(function(){
-    this.game = require('./tractor');
+    this.game = require('../src/tractor');
   });
   
   describe("authorization", function(){
@@ -27,15 +27,15 @@ describe("tractor game", function() {
       var credentials = {
         username: "",
         password: ""
-      }
-      assert(this.game.validateCredentials(credentials) == false);
+      };
+      assert(this.game.validateCredentials(credentials) === false);
     });
 
     it ("should return true when credentials are valid", function(){
       var credentials = {
         username: 'mrak',
         password: 'mrak'
-      }
+      };
       assert(this.game.validateCredentials(credentials));
     });
   });  
@@ -58,7 +58,7 @@ describe("tractor game", function() {
         var expected = {
           error: "You have not provided credentials. ",
           unclaimedPlayers: ["mrak","player2","player3","player4"]
-        }
+        };
         this.game.playerFunction(request, response);
         assert.equal(response.write.args[0][0], JSON.stringify(expected));
         assert.deepEqual(response.writeHead.args[0], [401, 'NO CREDENTIALS', {'Content-Type':'application/json'}]);
@@ -77,7 +77,7 @@ describe("tractor game", function() {
         var expected = {
           error: "You have provided invalid credentials. ",
           unclaimedPlayers: ["mrak","player2","player3","player4"]
-        }
+        };
         this.game.playerFunction(request, response);
         assert.equal(response.write.args[1][0], JSON.stringify(expected));
         assert.deepEqual(response.writeHead.args[1], [401, 'INVALID CREDENTIALS', {'Content-Type':'application/json'}]);
